@@ -22,13 +22,13 @@ Use some sort of looping. Do Not use String.prototype.replace
 */
 
 const urlEncode = function (text) {
-  let trimmed = text.trim();
+  let txtsliced = text.trim();
   let result = "";
-  for (let i = 0; i < trimmed.length; i++) {
-    if (trimmed[i] === " ") {
+  for (let i = 0; i < txtsliced.length; i++) {
+    if (txtsliced[i] == " ") {
       result += "%20";
     } else {
-      result += trimmed[i];
+      result += txtsliced[i];
     }
   }
   return result;

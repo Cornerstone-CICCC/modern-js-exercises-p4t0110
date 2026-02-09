@@ -23,8 +23,33 @@ Create a function named squareCode that will receive a message, and return the s
 */
 
 const squareCode = function (message) {
-  // Put your solution here
+  const clean = message.replaceAll(" ", "");
+  const cols = Math.ceil(Math.sqrt(clean.length));
+  const matrix = [];
+  for (let i = 0; i < clean.length; i += cols) {
+    matrix.push(clean.slice(i, i + cols));
+  }
+  const encoded = [];
+
+  for(let col = 0; col < cols; col ++) {
+    let word = "";
+    for (let row = 0; row < matrix.length; row ++){
+      if (matrix[row][col]) {
+        word += matrix[row][col];
+      }
+    }
+    encoded.push(word);
+  }
+  return encoded.join(" ");
 };
+
+/* works as: 
+chill out
+c h i l l   o u t
+c x x   h x x   i x 
+c l x   h l x   i o
+c l u   h l t   i o
+*/
 
 console.log(squareCode("chill out")); // clu hlt io
 console.log(squareCode("feed the dog")); // fto ehg ee dd
